@@ -259,9 +259,9 @@ class R2RProviderFactory:
         embedding_provider: Optional[EmbeddingProvider] = None
 
         if embedding.provider == "openai":
-            if not os.getenv("OPENAI_API_KEY"):
+            if not os.getenv("OPENAI_EMBEDDING_API_KEY"):
                 raise ValueError(
-                    "Must set OPENAI_API_KEY in order to initialize OpenAIEmbeddingProvider."
+                    "Must set OPENAI_EMBEDDING_API_KEY in order to initialize OpenAIEmbeddingProvider."
                 )
             from core.providers import OpenAIEmbeddingProvider
 

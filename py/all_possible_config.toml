@@ -34,7 +34,7 @@ audio_lm = ""
     xls  = 10000000
     xlsx = 10000000
     odt  = 5000000
-    pdf  = 30000000
+    pdf  = 60000000
     eml  = 5000000
     msg  = 5000000
     p7s  = 5000000
@@ -167,7 +167,7 @@ disable_create_extension = false
 # Embedding Settings (EmbeddingConfig)
 ################################################################################
 [embedding]
-provider = "litellm"
+provider = "openai"
 base_model = "openai/text-embedding-3-small"
 base_dimension = 512
 # Optional reranking settings (leave empty if not used)
@@ -189,7 +189,7 @@ max_backoff = 64.0
 # (Usually mirrors the embedding settings; override if needed.)
 ################################################################################
 [completion_embedding]
-provider = "litellm"
+provider = "openai"
 base_model = "openai/text-embedding-3-small"
 base_dimension = 512
 batch_size = 1

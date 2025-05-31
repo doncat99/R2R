@@ -40,8 +40,8 @@ access_token_lifetime_in_minutes = 60000
 refresh_token_lifetime_in_days = 7
 require_authentication = false
 require_email_verification = false
-default_admin_email = "admin@example.com"
-default_admin_password = "change_me_immediately"
+default_admin_email = "don@neuraedge.ai"
+default_admin_password = "123456"
 
 [completion]
 provider = "r2r"
@@ -64,23 +64,68 @@ provider = "postgres"
 [database]
 provider = "postgres"
 user = "postgres"
-password = "123"
+password = "postgres"
 host = "localhost"
 port = 5432
 db_name = "postgres"
 project_name = "r2r_default"
 
-default_collection_name = "Default"
+default_collection_name = "esg"
 default_collection_description = "Your default collection."
 collection_summary_prompt = "collection_summary"
 
   [database.graph_creation_settings]
-    graph_entity_description_prompt = "graph_entity_description"
-    graph_extraction_prompt = "graph_extraction"
-    entity_types = [] # if empty, all entities are extracted
-    relation_types = [] # if empty, all relations are extracted
-    automatic_deduplication = true # enable automatic deduplication of entities
-
+      graph_entity_description_prompt = "graph_entity_description"
+      graph_extraction_prompt = "graph_extraction"
+      entity_types = []
+      # entity_types = [
+      #     "Company",
+      #     "Industry",
+      #     "Country",
+      #     "ESG_Metric",
+      #     "ESG_Score",
+      #     "ESG_Framework",
+      #     "Regulation",
+      #     "Rating_Agency",
+      #     "Investor",
+      #     "Portfolio",
+      #     "Stakeholder",
+      #     "Material_Issue",
+      #     "Investment_Manager",
+      #     "Asset_Owner",
+      #     "ESG_Rating_Provider",
+      #     "Proxy_Advisor",
+      #     "Stewardship_Overlay_Provider",
+      #     "ESG_Strategy",
+      #     "ESG_Report",
+      #     "Climate_Scenario",
+      #     "Sustainability_Bond"
+      # ]
+      relation_types = []
+      # relation_types = [
+      #     "has_ESG_metric",
+      #     "has_ESG_score",
+      #     "provided_by",
+      #     "complies_with",
+      #     "reports_under",
+      #     "operates_in",
+      #     "belongs_to",
+      #     "invests_in",
+      #     "holds",
+      #     "engages_with",
+      #     "affects",
+      #     "has_category",
+      #     "uses_rating_from",
+      #     "owns_assets_of",
+      #     "reports_to",
+      #     "complies_with_regulation",
+      #     "invests_in_strategy",
+      #     "issues",
+      #     "assesses_risk_using",
+      #     "funds",
+      #     "provides_advice_to"
+      # ]
+      automatic_deduplication = true
   [database.graph_enrichment_settings]
     graph_communities_prompt = "graph_communities"
 
@@ -95,7 +140,7 @@ base_model = "openai/text-embedding-3-small"
 base_dimension = 512
 # rerank_model = "huggingface/mixedbread-ai/mxbai-rerank-large-v1" # reranking model
 batch_size = 128
-concurrent_request_limit = 20
+concurrent_request_limit = 256
 initial_backoff = 1.0
 quantization_settings = { quantization_type = "FP32" }
 
@@ -105,24 +150,7 @@ provider = "openai"
 base_model = "openai/text-embedding-3-small"
 base_dimension = 512
 batch_size = 128
-concurrent_request_limit = 20
-
-# [embedding]
-# provider = "ollama"
-# base_model = "mxbai-embed-large"
-# base_dimension = 1_024
-# batch_size = 128
-# concurrent_request_limit = 256
-# initial_backoff = 1.0
-# quantization_settings = { quantization_type = "FP32" }
-
-# [completion_embedding]
-# provider = "ollama"
-# base_model = "mxbai-embed-large"
-# base_dimension = 1_024
-# batch_size = 128
-# concurrent_request_limit = 256
-
+concurrent_request_limit = 256
 
 [ingestion]
 provider = "r2r"

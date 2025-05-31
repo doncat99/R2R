@@ -61,7 +61,7 @@ class AppConfig(InnerConfig):
         "xlsx": 10_000_000,
         "odt": 5_000_000,
         # PDFs can expand quite a bit when converted to text
-        "pdf": 30_000_000,
+        "pdf": 60_000_000,
         # E-mail
         "eml": 5_000_000,
         "msg": 5_000_000,

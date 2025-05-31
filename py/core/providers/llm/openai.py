@@ -31,8 +31,12 @@ class OpenAICompletionProvider(CompletionProvider):
 
         # Initialize OpenAI clients if credentials exist
         if os.getenv("OPENAI_API_KEY"):
-            self.openai_client = OpenAI()
-            self.async_openai_client = AsyncOpenAI()
+            # self.openai_client = OpenAI()
+            # self.async_openai_client = AsyncOpenAI()
+            api_key = os.getenv("OPENAI_API_KEY")
+            base_url = os.getenv("OPENAI_API_BASE")
+            self.openai_client = OpenAI(api_key=api_key, base_url=base_url)
+            self.async_openai_client = AsyncOpenAI(api_key=api_key, base_url=base_url)
             logger.debug("OpenAI clients initialized successfully")
 
         # Initialize Azure OpenAI clients if credentials exist

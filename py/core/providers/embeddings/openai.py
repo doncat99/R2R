@@ -41,12 +41,14 @@ class OpenAIEmbeddingProvider(EmbeddingProvider):
             raise ValueError(
                 "OpenAIEmbeddingProvider must be initialized with provider `openai`."
             )
-        if not os.getenv("OPENAI_API_KEY"):
+        if not os.getenv("OPENAI_EMBEDDING_API_KEY"):
             raise ValueError(
-                "Must set OPENAI_API_KEY in order to initialize OpenAIEmbeddingProvider."
+                "Must set OPENAI_EMBEDDING_API_KEY in order to initialize OpenAIEmbeddingProvider."
             )
-        self.client = OpenAI()
-        self.async_client = AsyncOpenAI()
+        api_key = os.getenv("OPENAI_EMBEDDING_API_KEY")
+        base_url = os.getenv("OPENAI_EMBEDDING_API_BASE")
+        self.client = OpenAI(api_key=api_key, base_url=base_url)
+        self.async_client = AsyncOpenAI(api_key=api_key, base_url=base_url)
 
         if config.rerank_model:
             raise ValueError(
